@@ -1,5 +1,8 @@
-console.log("node.js");
+// console.log("node.js");
 
 const firstname = require("./random.js")
 
-module.exports = firstname;
+const {age, collegeName} = require("./main.js")
+
+console.log(firstname,age,collegeName);
+// module.exports = firstname;
