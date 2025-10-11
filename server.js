@@ -6,9 +6,7 @@ const server = http.createServer((req,res)=>{
     }else{
         res.end('home')
     }
-
 })
-
 server.listen(5000,()=>{
     console.log('server is runing');
     console.log(server);
