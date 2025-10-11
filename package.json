@@ -1,5 +1,25 @@
 {
   "dependencies": {
     "nodemon": "^3.1.10"
-  }
+  },
+  "name": "node",
+  "version": "1.0.0",
+  "main": "Index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aryansharma8706/NODE.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aryansharma8706/NODE/issues"
+  },
+  "homepage": "https://github.com/aryansharma8706/NODE#readme",
+  "description": ""
 }
