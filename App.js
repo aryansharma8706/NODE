@@ -65,7 +65,6 @@ app.post('/news', (req, res) => {
 
 
 
-
 // PATCH /news/:id
 app.patch("/news/:id", (req, res) => {
   const id = parseInt(req.params.id);
@@ -91,3 +90,6 @@ app.patch("/news/:id", (req, res) => {
 app.listen(3000, () => {
   console.log('server is running on 3000 port');
 });
+
+
+
