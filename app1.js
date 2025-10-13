@@ -63,8 +63,45 @@ app.post('/news', (req, res) => {
   //calculating id for new item
 });
 
-//create a update api (use put , patch method) for an article suppose url will be /news/:id => news/2 like i have to update the 2 article author 
-//delete api using delete method => suppose i have to delete article with id : 3 you have to make a route like /news/:id => news/3 with delete method => then use req.params.id to parse the id and convert to number then parse the data form news.json file and dlete the article which have id 3
+
+
+// PATCH /news/:id
+app.patch("/news/:id", (req, res) => {
+  const id = parseInt(req.params.id);
+  const updates = req.body; // e.g. { author: "David" }
+
+  const article = news.find((a) => a.id === id);
+  if (!article) {
+    return res.status(404).json({ message: "Article not found" });
+  }
+
+  // Update only provided fields
+  Object.assign(article, updates);
+
+  res.json({
+    message: "Article updated successfully",
+    updatedArticle: article,
+  });
+});
+
+
+//Delete method 
+app.delete("/news/:id", (req, res) => {
+  const id = parseInt(req.params.id);
+
+  const index = news.findIndex((article) => article.id === id);
+  if (index === -1) {
+    return res.status(404).json({ message: "Article not found" });
+  }
+
+  const deletedArticle = news.splice(index, 1); // remove 1 item from array
+
+  res.json({
+    message: "Article deleted successfully",
+    deletedArticle: deletedArticle[0],
+  });
+});
+
 app.listen(3000, () => {
   console.log('server is running on 3000 port');
 });
