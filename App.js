@@ -63,6 +63,25 @@ app.post('/news', (req, res) => {
   //calculating id for new item
 });
 
+// PUT /news/:id
+app.put("/news/:id", (req, res) => {
+  const id = parseInt(req.params.id);
+  const { title, author } = req.body;
+
+  const index = news.findIndex((article) => article.id === id);
+  if (index === -1) {
+    return res.status(404).json({ message: "Article not found" });
+  }
+
+  // Replace entire article
+  news[index] = { id, title, author };
+
+  res.json({
+    message: "Article replaced successfully",
+    updatedArticle: news[index],
+  });
+});
+
 app.listen(3000, () => {
   console.log('server is running on 3000 port');
 });
