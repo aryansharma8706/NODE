@@ -6,7 +6,6 @@ const fs = require('fs');
 
 app.use(express.json());
 
-
 app.get('/', (req, res) => {
   res.send('hello from the express');
 });
@@ -42,8 +41,6 @@ app.get('/news/:id', (req, res) => {
 app.post('/news', (req, res) => {
   console.log('data from client' , req.body);
 });
-
-
 
 app.listen(3000, () => {
   console.log('server is running on 3000 port');
