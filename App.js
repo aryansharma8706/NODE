@@ -86,6 +86,22 @@ app.patch("/news/:id", (req, res) => {
 
 
 //Delete method 
+app.delete("/news/:id", (req, res) => {
+  const id = parseInt(req.params.id);
+
+  const index = news.findIndex((article) => article.id === id);
+  if (index === -1) {
+    return res.status(404).json({ message: "Article not found" });
+  }
+
+  const deletedArticle = news.splice(index, 1); // remove 1 item from array
+
+  res.json({
+    message: "Article deleted successfully",
+    deletedArticle: deletedArticle[0],
+  });
+});
+
 
 app.listen(3000, () => {
   console.log('server is running on 3000 port');
