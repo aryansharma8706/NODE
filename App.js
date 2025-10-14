@@ -48,3 +48,13 @@ app.get('/movies/:apiKey' , CheckApiKey, (req,res)=>{
 app.listen(PORT, () => {
   console.log(`server is running on ${PORT}`);
 });
+
+//routers groups
+app
+.route("/blogs")
+.get((req, res) => {
+  res.send("all blogs");
+})
+.post((req, res) => {
+  res.send("new blog added");
+}); 
