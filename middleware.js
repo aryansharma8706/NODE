@@ -16,10 +16,10 @@ app.use((req, res, next) => {
 });
 
 //express.json()
-app.use((req,res,next)=>{
-req.body = {name : "TEST"}
-next()
-})
+app.use((req, res, next) => {
+  req.body = { name: 'TEST' };
+  next();
+});
 
 app.get('/health', (req, res) => {
   res.send('running');
@@ -30,37 +30,30 @@ app.post('/name', (req, res) => {
 });
 
 //ROUTE SPECIFIC MIDDLEWARE TO CHECK IF KEY IS VALID
-function CheckApiKey(req,res,next){
-  console.log('running checkapikey middleware')
-  const apiKey = req.params.apiKey ;
-  console.log(apiKey)
-  if(apiKey === 'test@123'){
-    next()
-  }else {
-    res.status(401).send("INVALID API KEY")
+function CheckApiKey(req, res, next) {
+  console.log('running checkapikey middleware');
+  const apiKey = req.params.apiKey;
+  console.log(apiKey);
+  if (apiKey === 'test@123') {
+    next();
+  } else {
+    res.status(401).send('INVALID API KEY');
   }
 }
-app.get('/movies/:apiKey' , CheckApiKey, (req,res)=>{
-  res.send(
-    'MOVIES DATA'
-  )
-})
+app.get('/movies/:apiKey', CheckApiKey, (req, res) => {
+  res.send('MOVIES DATA');
+});
+
+//routes group
+app
+  .route('/blogs')
+  .get((req, res) => {
+    res.send('all blogs');
+  })
+  .post((req, res) => {
+    res.send('blog created ');
+  });
+//create a route group for update ,deleete and get single blog
 app.listen(PORT, () => {
   console.log(`server is running on ${PORT}`);
 });
-
-//routers groups
-app
-.route("/blogs")
-.get((req, res) => {
-  res.send("all blogs");
-})
-.post((req, res) => {
-  res.send("new blog added");
-}); 
-
-app
-.delete((req, res) => {
-  res.send("all blogs deleted");
-});
-
