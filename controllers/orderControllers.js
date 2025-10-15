@@ -1,3 +1,9 @@
+// exports.getAllOrder = (req,res)=>{
+//     res.send('order coming from the routes file')
+// }
+
 exports.getAllOrder = (req,res)=>{
-    res.send('order coming from the routes file')
+    res.send
+    ('order coming from the routes file')
 }
+console.log(exports) ;
