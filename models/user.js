@@ -16,3 +16,4 @@ const User = mongoose.model("user" , userSchema)
 console.log(User)
 
 module.exports = User
+
